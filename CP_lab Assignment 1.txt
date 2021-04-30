@@ -1,0 +1,117 @@
+Name : Saood Ur Rahman
+RollNo : 17P-6092
+Section : A
+Assignment : 1
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+struct nameType{
+	string firstName;
+	string midlleName;
+	string lastName;
+       }
+	void setValues(string f,string m, string l){
+        firstName=f;
+        midlleName=m;
+        lastName=l;
+	}
+
+       void printNames(){
+              cout<<"FIRST NAME  : "<<firstName<<endl;
+              cout<<"MIDDLE NAME : " <<midlleName<<endl;
+              cout<<"LAST NAME   : " <<lastName<<endl;
+       }
+};
+
+struct adressType{
+       string adress1;
+	   string adress2;
+	   string city;
+	   string state;
+	   string zipcode;
+       void setAdress(string add1,string add2){
+              adress1=add1;
+              adress2=add2;
+       }
+
+       void setCity(string c){
+              city=c;
+       }
+       void setState(string s){
+              state=s;
+       }
+       void setZipCode(string z){
+              zipcode=z;
+       }
+       void printAdress(){
+              cout<<"ADRESS 1 :"<<adress1<<endl;
+              cout<<"ADRESS 2 :"<<adress2<<endl;
+              cout<<"CITY     :"<<city<<endl;
+              cout<<"STATE    :"<<state<<endl;
+              cout<<"ZIPCODE  :"<<zipcode<<endl;
+       }
+       };
+struct student{
+       int id;
+       nameType name;
+       adressType adress;
+
+};
+
+void main(){
+       student studentArray[5];
+}
+
+
+
+void fun(){
+	int i,j,k;
+
+	double array1[5];
+	double array2[5];
+	double array3[5];
+	double test_array[15];
+	for(i =0;i<5;i++)
+		cin>>array1[i];
+	for(j =0;j<5;j++)
+		cin>>array2[j];
+	for(k =0;k<5;k++)
+		cin>>array3[k];
+
+	double *p;
+	p = &array1[5];
+	p = &array2[5];
+	p = &array1[5];
+	for(int n = 0;l<5;l++){
+		test_array[l] = *p;
+		p++;
+	}
+	for(int m =0;m<5;m++){
+		test_array[m] = *p;
+		p++;
+	}
+	for(int n =0; n<5;n++){
+		test_array[n] =*p;
+		p++;
+	}
+
+	}
+
+
+struct Employee_Struct{
+	string employeFirstName;
+	string lastName;
+	string empFatherName;
+	int Emp_num;
+	char bloodGrop;
+	int emp_age;
+	string factoryName;
+	int PhonNumber;
+	string departmant;
+	double salaries[4];
+	char email;
+};

@@ -1,0 +1,118 @@
+Name : Saood Ur Rahaman
+Roll# : 17P-6092
+Section: A
+
+
+#include<iostream>
+using namespace std;
+
+int a[10],l,u,i,j;
+void quick_sort(int a[],int l,int u);
+
+void main(){
+	cout <<"enter 10 elements";
+	for(i=0;i<10;i++)
+		cin >> a[i];
+		l=0;
+		u=9;
+		quick_sort(a,l,u);
+		cout <<"sorted elements";
+	for(i=0;i<10;i++)
+		cout << a[i] << " ";
+
+}
+ 
+void quick_sort(int a[],int l,int u){
+   int p,temp;
+   if(l<u){
+   	p=a[l];
+   	i=l;
+   	j=u;
+   while(i<j){
+      while(a[i] <= p && i<j )
+	 i++;
+      while(a[j]>p && i<=j )
+	   j--;
+      if(i<=j){
+      temp=a[i];
+      a[i]=a[j];
+      a[j]=temp;
+      }
+  }
+  temp=a[j];
+  a[j]=a[l];
+  a[l]=temp;
+  
+  for(i=0;i<10;i++)
+  	cout <<a[i];
+  quick_sort(a,l,j-1);
+  quick_sort(a,j+1,u); 
+ }
+}
+
+                              
+
+
+// function to swap two elements
+void swap ( int* a, int* b )
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+
+int partition (int arr[], int l, int h)
+{
+    int x = arr[h];
+    int i = (l - 1);
+ 
+    for (int j = l; j <= h- 1; j++)
+    {
+        if (arr[j] <= x)
+        {
+            i++;
+            swap (&arr[i], &arr[j]);
+        }
+    }
+    swap (&arr[i + 1], &arr[h]);
+    return (i + 1);
+}
+
+void quickSortIterative (int arr[], int l, int h){
+    int stack[ h - l + 1 ];
+    int top = -1;
+    stack[ ++top ] = l;
+    stack[ ++top ] = h;
+    while ( top >= 0 ){
+        
+        h = stack[ top-- ];
+        l = stack[ top-- ];
+        int p = partition( arr, l, h );
+        if ( p-1 > l ){
+            stack[ ++top ] = l;
+            stack[ ++top ] = p - 1;
+        }
+        if ( p+1 < h )
+        {
+            stack[ ++top ] = p + 1;
+            stack[ ++top ] = h;
+        }
+    }
+}
+
+void printArr( int arr[], int n )
+{
+    int i;
+    for ( i = 0; i < n; ++i )
+        printf( "%d ", arr[i] );
+}
+
+int main()
+{
+    int arr[] = {4, 3, 5, 2, 1, 3, 2, 3};
+    int n = sizeof( arr ) / sizeof( *arr );
+    quickSortIterative( arr, 0, n - 1 );
+    printArr( arr, n );
+    return 0;
+}

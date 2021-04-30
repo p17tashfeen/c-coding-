@@ -1,0 +1,238 @@
+Name : saood ur rahman
+Rollno: 17p-6092
+section : "A"
+
+
+
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+
+
+class miniFacebook{
+
+protected:
+	string Firstname;
+	string lastname;
+	string email;
+	string pass;
+
+public:
+	miniFacebook(){
+		Firstname = "saood";
+		lastname = "rahamn";
+		email = "saood.rahaman7@gmail.com";
+		pass = "saood1234";
+	}
+	void sinUp(){
+		string _Firstname;
+		string _lastname;
+		string _email;
+		string _pass;
+		cout<<"......................Wellcome to Facebook.........................."<<endl;
+		cout<<endl;
+		cout<<"For sinUp Enter Data :"<<endl;
+
+		cout<<"Enter your First Name :";
+		cin>>Firstname;
+		cout<<"Enter your last Name :";
+		cin>>lastname;
+		cout<<"Enter your email or Phone num ";
+		cin>>email;
+		cout<<"Enter your PIN code :";
+		cin>>pass;
+
+
+		ofstream obj;
+		obj.open("sinup");
+		obj<<Firstname<<endl;
+		obj<<lastname<<endl;
+		obj<<email<<endl;
+		obj<<pass<<endl;
+		obj.close();
+
+	}
+
+	void log_in(){
+		string _Firstname;
+		string _lastname;
+		string _email;
+		string _pass;
+
+		cout<<endl;
+		cout<<"For Login Enter the Data :"<<endl;
+		cout<<"Enter _Firstname :"<<endl;
+		cin>>_Firstname;
+		cout<<"Enter _Lastname :"<<endl;
+		cin>>_lastname;
+		cout<<"Enter _PIN :"<<endl;
+		cin>>_pass;
+		cout<<"Enter _Email or phone num :"<<endl;
+		cin>>_email;
+		string line;
+		ifstream in("sinUp");
+		if(in.is_open()){
+			while(!in.eof()){
+				getline(in,line);	
+			}
+
+			if (_Firstname == Firstname && _lastname == lastname && _pass== pass && _email == email ) {
+				cout << "Login Successfully!"<< endl;
+				cout << "    Enter  :         1) show Friend      2) add Friend   3) show folower  4) Add folower 5)Blocked "<< endl;
+		}
+
+		else {
+			cout << "InValid UserName And Password"<< endl;
+		}
+	}
+		in.close();
+	}
+
+
+};
+
+class Firendfolowers{
+public:
+
+	void showFriend(){
+
+		ifstream in("showFriend");
+		cout<<"Friends : "<<endl;
+		string str;
+		while(getline(in,str)){
+			cout<<str<<endl;
+	}
+	in.close();
+	}
+
+	void addFriend(){
+		fstream in("showFriend",ios::app);
+		cout<<"Enter Friends to add :"<<endl;
+		string str;
+		getline(cin , str);
+		in >> str ;
+		in.close();
+	}
+
+	void addfolower(){
+		fstream in("showfolower",ios::app);
+		cout<<"Enter folower to add :"<<endl;
+		string str;
+		getline(cin , str);
+		in >> str ;
+		in.close();
+	}
+
+	void showfolower(){
+		ifstream in("showfolower");
+		cout<<"Folower : "<<endl;
+		string str;
+		while(getline(in,str)){
+			cout<<str<<endl;
+	}
+	in.close();
+	}
+
+	void addBlocked(){
+		fstream blockFile("blocked.txt",ios::app);
+		fstream friendFile("friend.txt",ios::in);
+		string line;
+		bool flag = false;
+		cout<<"Enter the Name of the person to block : "<<endl;
+		string bname;
+		getline(cin,bname);
+
+		while(getline(friendFile,line)){
+			if(line==bname){
+				flag = true;
+			}
+		}
+	
+	if(flag == true){
+		fstream temp ("temp.txt",ios::out | ios::in);
+
+		while(getline(friendFile,line)){
+			temp<<line<<endl;
+		}
+		friendFile.close();
+		ofstream friendFile("friends.txt");
+
+		while(getline(temp,line)){
+			if(line != bname){
+				friendFile << line <<endl;
+			}
+		}
+		blockFile << bname <<endl;
+	}
+	else
+		blockFile<<bname<<endl;
+	}
+};
+
+class unknown : public miniFacebook, public Firendfolowers{
+public:
+	string search;
+	string unk[3];
+	unknown(){
+		unk[0] = "Naeem";
+		unk[1] = "Khan";
+		unk[2] = "jan";
+	}
+	void sear(){
+		cout << "search" << endl;
+		cin >> search;
+		for (int i = 0; i < 2; i++){
+			if (search == unk[i]){
+				cout << "Found : " << unk[i] << endl;
+			}
+		}
+	}
+	void Friendrequest(){
+		string request;
+		cout << "Do you want to send him friend request" << endl;
+		cin >> request;
+		
+			if (request == "yes")
+			{
+				cout << "your request is accepted" << endl;
+			}
+			else
+				cout<<"your request has not been accepted"<<endl;
+	}
+	
+
+
+};
+
+
+
+int main(){
+	
+	miniFacebook U1;
+	U1.sinUp();
+	U1.log_in();
+	Firendfolowers F1;
+	int num;
+	cin>>num;
+
+	if(num == 1){
+		F1.showFriend();
+	}
+	if(num == 2){
+		F1.addFriend();
+	}
+	if(num == 3){
+		F1.showfolower();
+	}
+	if(num == 4){
+		F1.addfolower();
+	}
+	if(num == 5){
+		F1.addBlocked();
+	}
+
+	unknown N1;
+	N1.sear();
+	return 0;
+}

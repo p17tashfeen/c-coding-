@@ -1,0 +1,185 @@
+Name : SAOOD UR RAHMAN
+ROLL # 17P-6092
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class publication{
+	protected:
+	string title;
+	float price;
+	public:
+		publication(){
+			title = 'x';
+			price=0;
+		}
+		~publication(){
+			title='x';
+			price=0;
+		}
+
+		void putData(){
+			cout<<"ENTER TITLE OF THE BOOK :"<<endl;
+			cin>>title;
+			cout<<"ENTER PRICE OF THE BOOK :"<<endl;
+			cin>>price;
+		}
+
+		void getData(){
+			cout<<"TITLE OF THE BOOK  : "<<title<<endl;
+			cout<<"PRICE OF THE BOOK  : "<<price<<endl;
+		}
+};
+
+class sales{
+	private:
+	float DollarSales[3];
+	public:
+		sales(){
+			for(int i = 0 ; i < 3 ;i++){
+				DollarSales[i]=0;
+			}
+		}
+
+		~sales(){
+			for(int i = 0 ; i < 3 ;i++){
+				DollarSales[i]=0;
+			}
+		}
+
+		void putData(){
+			for(int i = 0 ; i < 3 ; i++){
+				cout<<"ENTER SALES FOR MONTHS "<<i+1<<endl;
+				cin>>DollarSales[i];
+			}
+		}
+		void getData(){
+			for(int i = 0 ; i < 3 ; i++){
+				cout<<i+1<<" MONTH SALES = "<<DollarSales[i]<<endl;
+			}
+		}
+};
+
+class publication2:publication{
+	private:
+	int dd,mm,yy;
+	public:
+		void putData(){
+			char comma;
+			cout<<"ENTER DATE "<<endl;
+			cin>>dd>>comma>>mm>>coma>>yy;
+			publication::putData();
+		}
+		void getData(){
+			cout<<"DATE : "<<dd<<"-"<<mm<<"-"<<yy<<endl;
+			publication::getData();
+		}
+};
+
+class disk:publication2,sales{
+	string diskType;
+	public:
+		disk(){
+			diskType='x';
+		}
+		~disk(){
+			diskType='x';
+		}
+		void putData(){
+			cout<<"ENTER DISK TYPE"<<endl;
+			cin>>diskType;
+			publication2::putData();
+			sales::putData();
+		}
+		void getData(){
+			cout<<"DISK TYPE IS : "<<diskType<<endl;
+			publication2::getData();
+			sales::getData();
+		}
+};
+
+class book:publication2,sales{
+	int page_count;
+	public:
+		book(){
+			page_count=0;
+		}
+		~book(){
+			page_count=0;
+		}
+		void putData(){
+			cout<<"ENTER PAGE COUNT  "<<endl;
+			cin>>page_count;
+			publication2::putData();
+			sales::putData();
+			
+
+		}
+		void getData(){
+			cout<<"NUMBER OF PAGES  : "<<page_count<<endl;
+			publication2::getData();
+			sales::getData();
+
+		}
+
+};
+
+class tape:publication2,sales{
+	float playtime;
+	public:
+	tape(){
+		playtime=0;
+	}
+	~tape(){
+		playtime=0;
+	}
+	void putData(){
+		cout<<"ENTER PLAYTIME"<<endl;
+		cin>>playtime;
+		publication2::putData();
+		sales::putData();
+	}
+	void getData(){
+		cout<<"PLAY TIME : "<<play_time<<endl;
+		publication2::getData();
+		sales::getData();
+	}
+};
+
+class Bank_Accont{
+private:
+	int num;
+	double balance;
+public:
+	Bank_Accont(){
+		num = 0;
+		balance = 0;
+	}
+	Bank_Accont(int i,double j){
+		num = i;
+		balance = j;
+	}
+	~Bank_Accont(){
+		num = 0;
+		balance = 0;
+	}
+	void set_Accont(){
+		cout<<"ENTER ACCONT NUMBER : "<<endl;
+		cin>>num;
+	}
+	void get_Accont(){
+		cout<<"Accont number = "<<num<<endl;
+	}
+	void get_balance(){
+		cout<<"Balance = "<<balance<<endl;
+	}
+};
+
+void main(){
+	book b;
+	b.putData();
+	b.getData();
+}

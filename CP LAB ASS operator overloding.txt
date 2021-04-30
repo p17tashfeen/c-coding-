@@ -1,0 +1,199 @@
+NAME :SAOOD UR RAHMAN
+ROLLNO :17P-6092
+SECTION : "A"
+
+
+
+class dist{
+private:
+    int feet;
+    float inches;
+    
+public:
+    dist(){
+		feet = 0;
+		inches = 0;
+		}
+    
+    dist(int f, float in){
+		feet = f ;
+		inches = in;
+	}
+    void set_data(){
+		cout<<"Enter value for feet"<<endl;
+		cin>>feet;
+		cout<<"Enter value for inches"<<endl;
+		cin>>inches;
+	}
+	void show_data(){
+		cout<<"Feet = "<<feet<<endl;
+		cout<<"Inches = "<<inches<<endl;
+	}  
+	void operator ++(){
+		feet++;
+		inches++;
+		if(inches>=12){
+			inches = inches-12;
+			feet++;
+		}
+	}
+	void operator ++(int){
+		++feet;
+		++inches;
+		if(inches>=12){
+			inches -= 12;
+			++feet;
+	}
+} 
+	friend bool operator <(dist d1, dist d2);
+	friend dist operator +(dist d1,dist d2);
+	friend int operator +=(dist d1,dist d2);
+    
+};
+bool operator < (dist d1,dist d2){
+
+  float dd1=d1.feet+d1.inches/12;
+  float dd2=d2.feet+d2.inches/12;
+  if(dd1<dd2)
+		return true;
+	else
+		return false;
+	} 
+
+dist operator +(dist d1,dist d2){
+	int f = d1.feet + d2.feet;
+	float i = d1.inches + d2.inches;
+	if(i >= 12.0){
+		i -= 12.0;
+		f++;
+	}
+	return dist(f,i);
+}
+int operator +=(dist d1,dist d2){
+	int d3 = d1.feet +d2.feet;
+		return d3+=1;
+
+	float d4 = d1.inches+d2.inches;
+		return d4+=1;
+}
+
+
+
+int main()
+{
+
+	dist d1(7,6.25);
+	dist d2;
+	++d1;
+	d1++;
+	if(d1<d2)
+		cout<<"d1 is smaller than d2"<<endl;
+	else
+		cout<<"d2 is smaller than d1"<<endl;
+    return 0;
+}
+
+class clockType{ 
+private: 
+	int hr;
+	int min;
+	int sec;
+public:
+	void operator ++(){
+		hr++;
+		min++;
+		sec++;
+		if(sec>=60){
+			sec = sec-60;
+			min++;
+		}
+		if(min>=60){
+			min = min-60;
+			hr++;
+		}
+
+	}
+	void operator ++(int){
+		++hr;
+		++min;
+		++sec;
+		if(sec>=60){
+			sec = sec-60;
+			min++;
+		}
+		if(min>=60){
+			min = min-60;
+			hr++;
+		}
+
+	}
+	bool opertator != (Time t){
+		int c1 = hr*60+min+sec/60;
+		int c2 = t.hr*60+t.min+t.sec/60;
+		if(c1!=c2)
+			return true;
+		else
+			return false;
+	}
+	int operator >=(Time t){
+		int m1 = hr*60+min+sec/60;
+		int m2 = t.hr*60+t.min+t.sec/60;
+		if (m1>=m2)
+			return 1;
+		else
+			return 0;
+
+	}
+	Time operator -(Time){
+		t.hr = hr-t.hr;
+		t.min = min-t.min;
+		t.sec = sec -t.sec;
+		return t;
+	}
+	void operator /= (Time t){
+		float s1,s2;
+		s1 = hr*3600+min*60+sec;
+		s2 = t.hr*hr+t.min*60+sec;
+		s1 /= s2;
+
+	}
+	void operator *= (Time t){
+		float s1,s2;
+		s1 = hr*3600+min*60+sec;
+		s2 = t.hr*hr+t.min*60+sec;
+		s1 *= s2;
+
+	}
+	Time operator +(Time){
+		t.hr = hr+t.hr;
+		t.min = min+t.min;
+		t.sec = sec +t.sec;
+		return t;
+
+	}
+
+	bool opertator > (Time t){
+		int c1 = hr*60+min+sec/60;
+		int c2 = t.hr*60+t.min+t.sec/60;
+		if(c1>c2)
+			return true;
+		else
+			return false;
+	}
+	bool opertator <= (Time t){
+		int c1 = hr*60+min+sec/60;
+		int c2 = t.hr*60+t.min+t.sec/60;
+		if(c1<=c2)
+			return true;
+		else
+			return false;
+	}
+
+	bool equalTime(const clockType&) const; ;
+
+};
+ 
+bool clockType::equalTime(const clockType& otherClock) const{ 
+	return (hr == otherClock.hr && min == otherClock.min && sec == otherClock.sec);
+	(hr == otherClock.hr && min == otherClock.min && sec == otherClock.sec);
+}

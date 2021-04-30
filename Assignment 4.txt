@@ -1,0 +1,94 @@
+NAME : SAOOD UR RAHMAN
+ROLL # 17P-6092
+SECTION : "A"
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class DateAndTime{
+	private:
+		int hr,min,sec;
+		int day,month,year;
+	public:
+		DateAndTime(int h=0,int mn=0,int sc=0,int dd=0,int mm=0,int yy=0){
+			hr=h;						    
+			min=mn;
+			sec=sc;
+			day=dd;
+			month=mm;
+			year=yy;
+		}
+		~DateAndTime(){
+			hr = 0;
+			min = 0;
+			sec = 0;
+			day = 0;
+			month = 0;
+			year = 0;
+		}
+		void setTime(int h,int mn,int sc){ 
+			hr=h;
+			min=mn;
+			sec=sc;
+		}
+		void setDate(int d,int m,int y){
+			day = d;
+			month=m;
+			year=y;
+		}
+		
+		void getTime(){						
+			cout<<"ENTER TIME "<<endl;
+			char space;									
+			cin>>hr>>space>>min>>space>>sec;
+
+		}
+		void getDate(){						
+			char space;
+			cout<<"ENTER DATE " <<endl;     
+			cin>>day>>space>>month>>space>>year;
+		}
+		void shortDate(){               
+			cout<<"short date : "<<day<<"-" <<month<< "-" <<year<<endl;
+		}
+		void shortTime(){				  
+			string t = to_string(sec);			
+			if(t.length()== 2){
+				cout<<sec<<endl;
+			}
+			else{
+				cout<<sec<<endl;
+			}
+			cout<<"time : "<<hr<<" : " <<min<<" : ";
+		}
+		void longDate(){				
+			string t;
+			t=to_string(sec);			 
+			if(t.length()==2){
+				cout<<sec<<endl;
+			}
+			else{
+				cout<<sec<<endl;
+			}
+			cout<<"date : "<<day<<" - " <<month<< " - " <<year<<" TIME : "<<hr<<" : " <<min<<" : ";
+		}
+		void Date_Eng(){
+			string months [12]={"JANUARY","FEBRUARY","MARCH ","APRIl ","MAY ","JUNE ","JULY ","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+			cout<<"date in Eng : " <<day<<"th "<<months[month-1]<<","<<year<<endl;
+		}
+};
+
+
+void main(){
+	DateAndTime s1;	
+	s1.setTime(9,00,00);
+	s1.setDate(7,2,1997);
+	s1.getTime();
+	s1.getDate();
+	s1.shortDate();
+	s1.shortTime();
+	s1.longDate();
+	s1.Date_Eng();
+}

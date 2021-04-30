@@ -1,0 +1,174 @@
+NAME : SAOOD UR RAHMAN
+ROLL # 17P-6092
+SECTION :"A"
+
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class intType{
+private:
+	int x;
+
+public:
+	intType(){
+		x = 490;
+	}
+	intType(int num){
+		x = num;
+	}
+	~intType(){
+		cout<<"Destructor call"<<endl;
+	}
+	
+	void setNum(int num){
+		x = num;
+	}
+
+	void printNum(){
+		cout<< x <<endl;
+	}
+
+	int toAscii(){
+	char Ascii;
+	Ascii = char(x);
+	return Ascii;
+	}
+	
+	int count_evens(){
+		int count = 0;
+		for(int i = 0;i<=x;i++){
+			if(i%2==0){
+				count+=1;
+			}
+		}
+		return count;
+	}
+	
+	int count_odds(){
+		int count = 0;
+		for(int i = 0;i <= x;i++)
+			if(i%2==1){
+				count+=1;
+			}
+		return count;
+	}
+	
+	int sum_all_digit(){
+		int sum = 0;
+		for(int i=0;i<=x;i++){
+			sum += i;
+		}
+		return sum;
+	}
+	
+	int avg_of_digits(){
+		int sum = 0;
+		int average;
+		for(int i=0;i<=x;i++){
+			sum += i;
+		}
+		average = sum/x;
+		return average;
+	}
+	
+	int sum_of_even_digits(){
+		int sum = 0;
+		for(int i=0;i<=x;i++){
+			if(i%2==0){
+				sum += i;
+			}
+		}
+		return sum;
+	}
+	
+	int sum_of_odd_digits(){
+		int sum = 0;
+		for(int i=0;i<=x;i++){
+			if(i%2==1){
+				sum += i;
+			}
+	}
+	
+	return sum;
+	}
+	
+	int toBinary(){
+		int n;
+		cout<<"Enter a decimal number :"<<endl;
+		cin>>n;
+		int binary = 0,remainder;
+		int i=1;
+
+		while(n!=0){
+			remainder = n%2;
+			n = n/2;
+			binary += remainder*i;
+			i *= 10;
+
+	}
+	return binary;
+	}	
+	int remainder(){
+		int remainder;
+		remainder = x/4;
+		return remainder;
+	}
+	
+	int reverseNum(){
+		int Num = x;
+		int reverseNum = 0;
+		int remainder;
+		while(Num !=0){ 
+			remainder = Num % 10;
+			reverseNum = reverseNum*10 + remainder;
+			Num = Num/10;
+		}
+		return reverseNum;
+	}
+	bool pallindrom(){
+                int reverse_num=reverseNum();
+                if(x==reverse_num){
+                       return true;
+                }
+                else{
+                       return false;
+                     }
+	int numLenght(){
+             string value=to_string(x);                
+             return value.length();                              
+       }
+       string int_to_string(){                                           
+              return to_string(x);
+       }
+	int reverseNum(){
+              string data=int_to_string();                           
+              string s_reverse;                                        
+              int size=data.length();
+                     for(int i = size ; i >= 0 ; i--){          
+                           s_reverse+=data[i];
+                     }
+       int reverse_value=atoi(s_reverse.c_str());      
+                     return reverse_value;
+              }	
+	int add(intType num1, intType num2){
+               x+=(num1.x+num2.x);
+               return x;
+        }
+        int sub(intType num1, intType num2){
+               x-=(num1.x-num2.x);
+               return x;
+        }
+        int multiply(intType num1, intType num2){
+              x*=(num1.x*num2.x);
+               return x ;
+        }
+        int divide(intType num1, intType num2){
+               x/=(num1.x/num2.x);
+               return x;
+        }
+	
+};
+
